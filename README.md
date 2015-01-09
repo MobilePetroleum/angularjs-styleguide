@@ -1,6 +1,6 @@
 # AngularJS Style Guide
 
-*Opinionated AngularJS style guide for teams by [@john_papa](//twitter.com/john_papa)*
+*Opinionated AngularJS style guide for liberty seguros compania de seguros y reaseguros s.a. teams
 
 If you are looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications, then step right in. These styles are based on my development experience with [AngularJS](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
 
@@ -755,12 +755,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* recommended */
   function dataService() {
       var someValue = '';
-      var service = {
+      return {
           save: save,
           someValue: someValue,
           validate: validate
       };
-      return service;
 
       ////////////
 
@@ -822,14 +821,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           // implementation details go here
       };
 
-      var service = {
+      return {
           getAvengersCast: getAvengersCast,
           getAvengerCount: getAvengerCount,
           getAvengers: getAvengers,
           ready: ready
       };
-
-      return service;
   }
   ```
 
@@ -843,14 +840,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       var isPrimed = false;
       var primePromise;
 
-      var service = {
+      return {
           getAvengersCast: getAvengersCast,
           getAvengerCount: getAvengerCount,
           getAvengers: getAvengers,
           ready: ready
       };
-
-      return service;
 
       ////////////
 
@@ -1134,12 +1129,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .directive('myCalendarRange', myCalendarRange);
 
   function myCalendarRange() {
-      var directive = {
+      return {
           link: link,
           templateUrl: '/template/is/located/here.html',
           restrict: 'C'
       };
-      return directive;
 
       function link(scope, element, attrs) {
         /* */
@@ -1160,12 +1154,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .directive('myCalendarRange', myCalendarRange);
 
   function myCalendarRange() {
-      var directive = {
+      return {
           link: link,
           templateUrl: '/template/is/located/here.html',
           restrict: 'EA'
       };
-      return directive;
 
       function link(scope, element, attrs) {
         /* */
@@ -1196,7 +1189,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .directive('myExample', myExample);
 
   function myExample() {
-      var directive = {
+      return {
           restrict: 'EA',
           templateUrl: 'app/feature/example.directive.html',
           scope: {
@@ -1206,8 +1199,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           controller: ExampleController,
           controllerAs: 'vm'
       };
-      
-      return directive;
 
       function linkFunc(scope, el, attr, ctrl) {
           console.log('LINK: scope.max = %i', scope.max);
