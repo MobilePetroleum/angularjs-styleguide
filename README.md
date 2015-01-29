@@ -545,7 +545,31 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       }
   }
   ```
+  ```javascript
+  /*
+   * avoid
+   */
+  function Avengers($scope) {
+      var vm = this;
+      vm.avengers = [];
+      vm.getAvengers = getAvengers;
+      vm.title = 'Avengers';
 
+      $scope.$watch("vm.avengers", function () {
+          return getAvengers().then(function() {
+              logger.info('Activated Avengers View');
+          });
+      }
+
+      function getAvengers() {
+          return dataservice.getAvengers().then(function(data) {
+              vm.avengers = data;
+              return vm.avengers;
+          });
+      }
+  }
+  ```
+  
   ```javascript
   /*
    * recommend
