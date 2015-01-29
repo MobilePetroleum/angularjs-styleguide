@@ -546,6 +546,33 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
+  ```javascript
+  /*
+   * recommend
+   */
+  function Avengers($scope) {
+      var vm = this;
+      vm.avengers = [];
+      vm.getAvengers = getAvengers;
+      vm.title = 'Avengers';
+
+      $scope.$watch("vm.avengers", activate);
+
+      function activate() {
+          return getAvengers().then(function() {
+              logger.info('Activated Avengers View');
+          });
+      }
+
+      function getAvengers() {
+          return dataservice.getAvengers().then(function(data) {
+              vm.avengers = data;
+              return vm.avengers;
+          });
+      }
+  }
+  ```
+
 ### Defer Controller Logic
 ###### [Style [Y035](#style-y035)]
 
